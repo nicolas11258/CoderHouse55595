@@ -1,0 +1,11 @@
+{
+  "name": "actividades",
+  "version": "1.0.0",
+  "description": "",
+  "main": "actividad_1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
