@@ -2,14 +2,13 @@ const fs = require('fs').promises;
 
 console.log("Comprobación de la existencia del archivo (asíncrono)");
 
-// Utilizamos fs.access para comprobar la existencia del archivo de forma asíncrona con promesas
-fs.access('archivo.txt', fs.constants.F_OK)
-  .then(() => {
+(async () => {
+  try {
+    await fs.access('archivo.txt', fs.constants.F_OK);
     console.log('El archivo existe');
-  })
-  .catch(error => {
+  } catch (error) {
     console.log('El archivo no existe');
-  })
-  .finally(() => {
+  } finally {
     console.log("Fin de la comprobación (asíncrono)");
-  });
+  }
+})();

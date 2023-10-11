@@ -1,5 +1,5 @@
 //Sincronismo
-console.log("Inicio de la carga de datos (sincronismo)");
+console.log("1. Inicio de la carga de datos (sincronismo)");
 
 function cargarDatosDesdeServidor() {
   const datos = "Datos cargados desde el servidor";
@@ -7,10 +7,10 @@ function cargarDatosDesdeServidor() {
 }
 
 function procesarDatos(datos) {
-  console.log("Procesando datos:", datos);
+  console.log("3. Procesando datos:", datos);
 }
 
-console.log("Solicitando datos al servidor");
+console.log("2. Solicitando datos al servidor");
 const datosCargados = cargarDatosDesdeServidor();
 procesarDatos(datosCargados);
-console.log("Fin de la carga de datos (sincronismo)");
+console.log("4. Fin de la carga de datos (sincronismo)");

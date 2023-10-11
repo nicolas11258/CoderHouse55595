@@ -1,5 +1,5 @@
 //setTimeout
-console.log("Inicio de la carga de datos (setTimeout)");
+console.log("1. Inicio de la carga de datos (setTimeout)");
 
 function cargarDatosDesdeServidor(callback) {
   setTimeout(function() {
@@ -9,9 +9,9 @@ function cargarDatosDesdeServidor(callback) {
 }
 
 function procesarDatos(datos) {
-  console.log("Procesando datos:", datos);
+  console.log("4. Procesando datos:", datos);
 }
 
-console.log("Solicitando datos al servidor");
+console.log("2. Solicitando datos al servidor");
 cargarDatosDesdeServidor(procesarDatos);
-console.log("Fin de la carga de datos (setTimeout)");
+console.log("3. Fin de la carga de datos (setTimeout)");
