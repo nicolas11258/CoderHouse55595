@@ -59,6 +59,26 @@ class UserManager {
   writeUsersToFile(users) {
     fs.writeFileSync(this.fileName, JSON.stringify(users, null, 2));
   }
+
+  // Método para validar un usuario
+  validateUser(username, password) {
+    // Leer los usuarios desde el archivo
+    const users = this.readUsersFromFile();
+
+    // Buscar el usuario en el array por nombre de usuario
+    const user = users.find((u) => u.username === username);
+
+    if (!user) {
+      return 'Error: Usuario no encontrado'; // Usuario no existe
+    }
+
+    // Verificar si la contraseña coincide
+    if (this.verifyPassword(password, user.password)) {
+      return 'Logueado'; // Contraseña correcta
+    } else {
+      return 'Error: Contraseña incorrecta'; // Contraseña incorrecta
+    }
+  }
 }
 
 // Ejemplo de uso
