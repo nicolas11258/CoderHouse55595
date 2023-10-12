@@ -17,8 +17,8 @@ temp
 # Por ejemplo, para Visual Studio Code:
 .vscode
 
-# Ignorar el archivo .code-workspace
-.code-workspace
+# Ignorar el archivo CoderHouse-55595.code-workspace
+CoderHouse-55595.code-workspace
 
 # Para archivos de configuración locales, no los incluyas en el repositorio
 .env
