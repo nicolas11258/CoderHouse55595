@@ -31,17 +31,20 @@ class UserManager {
   }
 
   // Método para generar un hash de la contraseña
+  // Método para generar un hash de la contraseña con SHA-512 sin salt
   hashPassword(password) {
-    const salt = crypto.randomBytes(16).toString('hex');
-    const hash = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
-    return `${salt}:${hash}`;
+    const hash = crypto.createHash('sha512').update(password).digest('hex');
+    return hash;
   }
+  
 
   // Método para verificar una contraseña ingresada con la contraseña hasheada
-  verifyPassword(enteredPassword, storedPassword) {
-    const [salt, hash] = storedPassword.split(':');
-    const enteredHash = crypto.pbkdf2Sync(enteredPassword, salt, 10000, 64, 'sha512').toString('hex');
-    return hash === enteredHash;
+  verifyPassword(enteredPassword, storedPassword) {  
+    // Generar un hash de la contraseña ingresada con el mismo "salt"
+    const enteredHash = this.hashPassword(enteredPassword);
+  
+    // Comparar los hashes generados
+    return enteredHash === storedPassword;
   }
 
   // Método para leer los usuarios desde el archivo
