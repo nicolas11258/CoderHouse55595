@@ -31,12 +31,10 @@ class UserManager {
   }
 
   // Método para generar un hash de la contraseña
-  // Método para generar un hash de la contraseña con SHA-512 sin salt
   hashPassword(password) {
     const hash = crypto.createHash('sha512').update(password).digest('hex');
     return hash;
   }
-  
 
   // Método para verificar una contraseña ingresada con la contraseña hasheada
   verifyPassword(enteredPassword, storedPassword) {  
@@ -92,5 +90,7 @@ userManager.createUser({
   username: 'johndoe',
   password: 'micontraseña123',
 });
+
+console.log(userManager.validateUser('johndoe', 'micontraseña123'))
 
 // Puedes agregar más usuarios utilizando userManager.createUser()
