@@ -4,7 +4,6 @@
 # Ignorar los archivos package-lock.json en subdirectorios
 **/package-lock.json
 
-
 # Archivo de registro de errores
 npm-debug.log
 
@@ -17,6 +16,9 @@ temp
 # Dependiendo de tu editor/IDE, puedes necesitar agregar otros patrones.
 # Por ejemplo, para Visual Studio Code:
 .vscode
+
+# Ignorar el archivo .code-workspace
+.code-workspace
 
 # Para archivos de configuración locales, no los incluyas en el repositorio
 .env
