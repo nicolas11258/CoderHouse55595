@@ -1,5 +1,9 @@
-# Módulos de Node.js
-node_modules
+# Ignorar todas las carpetas node_modules en subdirectorios
+**/node_modules/
+
+# Ignorar los archivos package-lock.json en subdirectorios
+**/package-lock.json
+
 
 # Archivo de registro de errores
 npm-debug.log
