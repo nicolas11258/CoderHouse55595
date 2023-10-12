@@ -1,0 +1,18 @@
+# Módulos de Node.js
+node_modules
+
+# Archivo de registro de errores
+npm-debug.log
+
+# Archivo de registro creado por el sistema operativo
+.DS_Store
+
+# Carpeta temporal
+temp
+
+# Dependiendo de tu editor/IDE, puedes necesitar agregar otros patrones.
+# Por ejemplo, para Visual Studio Code:
+.vscode
+
+# Para archivos de configuración locales, no los incluyas en el repositorio
+.env
