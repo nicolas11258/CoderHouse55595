@@ -1,0 +1,6 @@
+[
+    { "id": 1, "nombre": "Juan", "apellido": "Pérez", "genero": "M" },
+    { "id": 2, "nombre": "María", "apellido": "Gómez", "genero": "F" },
+    { "id": 3, "nombre": "Carlos", "apellido": "López", "genero": "M" },
+    { "id": 4, "nombre": "Laura", "apellido": "García", "genero": "F" }
+  ]
