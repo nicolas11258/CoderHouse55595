@@ -16,12 +16,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Obtener todos los usuarios (GET)
-app.get('/api/usuarios', (req, res) => {
+app.get('/api/users', (req, res) => {
   res.status(200).json(usuarios);
 });
 
 // Obtener un usuario por ID (GET)
-app.get('/api/usuarios/:id', (req, res) => {
+app.get('/api/users/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const usuario = usuarios.find(user => user.id === id);
   if (!usuario) {
@@ -32,7 +32,7 @@ app.get('/api/usuarios/:id', (req, res) => {
 });
 
 // Crear un nuevo usuario (POST)
-app.post('/api/usuarios', (req, res) => {
+app.post('/api/users', (req, res) => {
   const nuevoUsuario = {
     id: usuarios.length + 1,
     nombre: req.body.nombre,
@@ -43,7 +43,7 @@ app.post('/api/usuarios', (req, res) => {
 });
 
 // Actualizar un usuario por ID (PUT)
-app.put('/api/usuarios/:id', (req, res) => {
+app.put('/api/users/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const usuario = usuarios.find(user => user.id === id);
   if (!usuario) {
@@ -56,7 +56,7 @@ app.put('/api/usuarios/:id', (req, res) => {
 });
 
 // Eliminar un usuario por ID (DELETE)
-app.delete('/api/usuarios/:id', (req, res) => {
+app.delete('/api/users/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const usuarioIndex = usuarios.findIndex(user => user.id === id);
   if (usuarioIndex === -1) {
