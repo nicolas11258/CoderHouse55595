@@ -2,6 +2,10 @@ import express from 'express'
 const app = express();
 const port = 8080;
 
+// Middleware para analizar el cuerpo de las solicitudes como datos codificados en formularios
+app.use(express.urlencoded({ extended: true }));
+
+// Middleware para analizar el cuerpo de las solicitudes como datos JSON
 app.use(express.json());
 
 // Frase inicial
