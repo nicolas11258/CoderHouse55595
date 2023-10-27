@@ -1,40 +1,23 @@
 import express from 'express';
-import handlesbar from 'express-handlebars';
+import handlebars from 'express-handlebars';
 import __dirname from './utils.js';
+import viewRouter from './routes/view.router.js';
 
 const port = 8080;
 const app = express();
 
-app.engine('handlebars', handlesbar.engine());
+app.engine('handlebars', handlebars.engine());
 
-app.set('views',`${__dirname}/views`);
+app.set('views', `${__dirname}/views`);
 app.set('view engine', 'handlebars');
 
-app.use(express.static(__dirname+'/public'));
+app.use(express.static(__dirname + '/public'));
 
-let food = [
-    {name:"Hamburguesa", price:"100"},
-    {name:"Banana", price:"20"},
-    {name:"Soda", price:"40"},
-    {name:"Ensalada", price:"120"},
-    {name:"Pizza", price:"150"},
-]
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
+app.use('/', viewRouter);
 
-app.get('/', (req, res)=>{
-    let testUser ={
-        name:"Hilda",
-        last_name: "Martinez",
-        role: "admin"
-    }
-
-    res.render('index',{
-        user:testUser,
-        isAdmin:testUser.role==="admin",
-        food
-    });
-});
-
-app.listen(port, ()=>{
-    console.log(`Servidor escuchando por el puerto ${port}`);
-})
+  app.listen(port, () => {
+    console.log(`Servidor Express escuchando en el puerto ${port}`);
+  });
