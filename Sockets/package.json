@@ -1,5 +1,5 @@
 {
-  "name": "clase_10",
+  "name": "sockets",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,6 +8,7 @@
   },
   "keywords": [],
   "author": "",
+  "type": "module",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",

@@ -1,17 +1,31 @@
-import express from 'express';
-import {Server} from 'socket.io';
+const express = require("express");
+const app = express();
+const server = require("http").Server(app);
+const io = require("socket.io")(server);
 
-const port = 3000;
+let messages = [
+  {
+    id: 1,
+    text: "hola soy un mensaje",
+    author: "Carlos"
+  }
+  ]
 
-const app = express()
+app.use(express.static('src/public'));
 
-const httpServer = app.listen(port, ()=>{
-  console.log(`Servidor corriendo en el puerto ${port}`);
-})
+server.listen(8080, function () {
+  console.log("Servidor corriendo en http://localhost:8080");
+});
 
-const sockerServer = new Server(httpServer);
-app.engine('handlebars', handlebars.engine());
-app.set('views', `${__dirname}/views` );
-app.set('view engine', 'handlebars');
-app.use(express.static(`${__dirname}/public`));
-app.use('/', vewsRouter);
+
+io.on("connection", function (socket) {
+  console.log("Un cliente se ha conectado");
+  socket.emit("messages", messages);
+
+  socket.on("newMessage", function(data){
+    console.log("llega mensaje")
+
+    messages.push(data);
+    io.emit('messages', messages);
+  })
+});
