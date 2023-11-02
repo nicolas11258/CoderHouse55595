@@ -16,11 +16,13 @@ app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'));
 app.use('/', viewRouter);
 
+let messages = [];
 io.on('connection', (socket) => {
     console.log('Un cliente se ha conectado');
   
-    socket.on('message', (message) => {
-        console.log('Mensaje recibido:', message);
+    socket.on('message', (data) => {
+        messages.push(data);
+        io.emit('messageLogs', messages)
     });
 });
   
