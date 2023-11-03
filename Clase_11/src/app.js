@@ -24,5 +24,10 @@ io.on('connection', (socket) => {
         messages.push(data);
         io.emit('messageLogs', messages)
     });
+
+    socket.on("auth", (username) => {
+        socket.emit("messageLogs", messages);
+        socket.broadcast.emit("userConnected", username);
+      });
 });
   

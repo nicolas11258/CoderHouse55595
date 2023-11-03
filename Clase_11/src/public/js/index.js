@@ -11,6 +11,14 @@ socket.on('messageLogs', data=>{
     log.innerHTML = messages;
 })
 
+socket.on("userConnected", function (username) {
+    Swal.fire({        
+        text: `${username} se ha unido al chat`,
+        toast: true,
+        position: 'top-right'
+    });
+});
+
 Swal.fire({
     title: 'Identificate',
     input: 'text',
@@ -22,12 +30,13 @@ Swal.fire({
     },
     allowOutsideClick: false,
 }).then((result) => {
-    user= result.value
+    user= result.value;
+    socket.emit('auth', user);
 });
 
 chatBox.addEventListener('keyup', evt => {
     if(evt.key==='Enter'){
-        if(chatBox.value.trim().lenght>0){
+        if(chatBox.value.trim().length>0){
             socket.emit('message', {user:user, message:chatBox.value});
             chatBox.value = '';
         }
