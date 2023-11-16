@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Rutas
-app.use('/products', productRoutes);
-app.use('/categories', categoryRoutes);
-app.use('/customers', customerRoutes);
-app.use('/orders', orderRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/categories', categoryRoutes);
+app.use('/api/customers', customerRoutes);
+app.use('/api/orders', orderRoutes);
