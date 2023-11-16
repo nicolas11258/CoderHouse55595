@@ -38,7 +38,7 @@ router.put('/:id', async (req, res) => {
 });
   
   // Eliminar una categoría por ID
-router.delete('/:id', async (req, res) => {
+/*router.delete('/:id', async (req, res) => {
 	try {
 		const categoria = await Category.findByIdAndDelete(req.params.id);
 		if (!categoria) {
@@ -48,6 +48,6 @@ router.delete('/:id', async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ message: error.message });
 	}
-});
+});*/
   
 export default router;

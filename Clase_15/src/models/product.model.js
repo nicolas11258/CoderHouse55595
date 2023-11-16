@@ -8,6 +8,7 @@ const productSchema = new Schema({
   precio: { type: Number, required: true },
   stock: { type: Number, default: 0 },
   categoria: { type: Schema.Types.ObjectId, ref: 'Category' },
+  esVisible: { type: Boolean, default: false },
 });
 
 const Product = model('Product', productSchema);
