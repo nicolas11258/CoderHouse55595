@@ -1,0 +1,82 @@
+1. **$set**: Establece el valor de un campo en un documento.
+
+Buscar antes de actualizar y confirmar 
+
+    ```bash
+    db.students.find({name:”Ana”})
+    ```
+
+    ```bash
+    db.students.updateOne(
+      { name: "Ana" },
+      { $set: { age: 22, grade: "A" } }
+    );
+    ```
+
+    Este ejemplo establece la edad en 22 y la calificación en "A" para el estudiante con nombre "Ana".
+
+2. **$unset**: Elimina un campo de un documento.
+
+    ```bash
+    db.students.updateOne(
+      { name: "Juan" },
+      { $unset: { grade: "" } }
+    );
+    ```
+
+    Elimina el campo "grade" del estudiante con nombre "Juan".
+
+3. **$inc**: Incrementa el valor de un campo en un número específico.
+
+    ```javascript
+    db.students.updateOne(
+      { name: "Pedro" },
+      { $inc: { age: 1 } }
+    );
+    ```
+
+    Incrementa la edad del estudiante con nombre "Pedro" en 1.
+
+4. **$rename**: Cambia el nombre de un campo.
+
+    ```javascript
+    db.students.updateOne(
+      { name: "Maria" },
+      { $rename: { 'oldField': 'newField' } }
+    );
+    ```
+
+    Renombra el campo 'oldField' a 'newField' en el documento de la estudiante con nombre "Maria".
+
+5. **$mul**: Multiplica el valor de un campo por un número específico.
+
+    ```javascript
+    db.students.updateOne(
+      { name: "Luisa" },
+      { $mul: { score: 1.5 } }
+    );
+    ```
+
+    Multiplica el valor del campo "score" por 1.5 para la estudiante con nombre "Luisa".
+
+6. **$min** y **$max**: Establecen el valor de un campo si el valor proporcionado es menor o mayor que el valor actual.
+
+    ```javascript
+    db.students.updateOne(
+      { name: "Carlos" },
+      { $min: { age: 20 } }
+    );
+    ```
+
+    Establece la edad del estudiante con nombre "Carlos" en 20 si su edad actual es mayor que 20.
+
+7. **$addToSet**: Agrega elementos a un conjunto (arreglo sin duplicados).
+
+    ```javascript
+    db.students.updateOne(
+      { name: "Laura" },
+      { $addToSet: { subjects: "Math" } }
+    );
+    ```
+
+    Agrega la materia "Math" al conjunto de materias de la estudiante con nombre "Laura".

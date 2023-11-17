@@ -1,0 +1,122 @@
+Ejemplo en vivo
+
+Se creará una base de datos llamada “baseCRUD”.
+Se agregará una colección llamada “mascotas”
+Se agregarán 3 mascotas con las propiedades: nombre, especie, edad
+Se buscarán mascotas por su especie
+Contar el número de mascotas totales agregadas.
+
+Solución
+
+Abre una nueva ventana de comandos y ejecuta el comando `mongo`. 
+Esto te llevará a la interfaz de línea de comandos de MongoDB.
+
+Ejecuta el siguiente comando para crear la base de datos "baseCRUD":
+
+     ```bash
+     use baseCRUD
+     ```
+   - Esto cambiará el contexto a la base de datos "baseCRUD".
+
+Ejecuta el siguiente comando para agregar la colección "mascotas":
+
+     ```bash
+     db.createCollection("mascotas")
+     ```
+
+Ejecuta los siguientes comandos para agregar tres mascotas a la colección "mascotas":
+
+     ```bash
+     db.mascotas.insert({ nombre: "Firulais", especie: "Perro", edad: 3 })
+     db.mascotas.insert({ nombre: "Michi", especie: "Gato", edad: 2 })
+     db.mascotas.insert({ nombre: "Rex", especie: "Perro", edad: 5 })
+     ```
+
+Ejecuta el siguiente comando para buscar mascotas por especie, por ejemplo, "Perro":
+
+     ```bash
+     db.mascotas.find({ especie: "Perro" })
+     ```
+   - Esto te mostrará todas las mascotas cuya especie sea "Perro".
+
+Ejecuta el siguiente comando para contar el número total de mascotas en la colección:
+
+     ```bash
+     db.mascotas.count()
+     ```
+   - Esto te dará el número total de mascotas en la colección "mascotas".
+
+ACTIVIDAD EN CLASE
+
+Sobre una base de datos llamada “colegio”, crear una colección “estudiantes” donde se agregarán documentos con los siguientes datos:
+nombre
+apellido
+curso
+edad
+correo
+sexo 
+Crear 5 estudiantes (Insert Many) con los campos mencionados arriba. Además, crear un estudiante sólo con nombre, apellido y curso. ¿Es posible?
+Realizar una búsqueda para obtener a todos los estudiantes.
+Realizar una búsqueda para obtener a todos los estudiantes de sexo H (hombre)
+Realizar un conteo para obtener el número de documentos totales.
+Realizar un conteo para obtener el número de documentos totales que cumplan con el criterio: “Es mujer”
+
+Solución
+
+Abre una nueva ventana de comandos y ejecuta el comando `mongo`. 
+Esto te llevará a la interfaz de línea de comandos de MongoDB.
+
+Ejecuta el siguiente comando para cambiar al contexto de la base de datos "colegio":
+
+     ```bash
+     use colegio
+     ```
+   - Esto cambiará el contexto a la base de datos "colegio" o la creará si no existe.
+
+Ejecuta el siguiente comando para crear la colección "estudiantes" e insertar 5 estudiantes:
+
+     ```bash
+     db.estudiantes.insertMany([
+       { nombre: "Juan", apellido: "Pérez", curso: "A", edad: 15, correo: "juan@example.com", sexo: "H" },
+       { nombre: "María", apellido: "Gómez", curso: "B", edad: 16, correo: "maria@example.com", sexo: "M" },
+       { nombre: "Carlos", apellido: "López", curso: "A", edad: 14, correo: "carlos@example.com", sexo: "H" },
+       { nombre: "Ana", apellido: "Martínez", curso: "C", edad: 17, correo: "ana@example.com", sexo: "M" },
+       { nombre: "Pedro", apellido: "Rodríguez", curso: "B", edad: 15, correo: "pedro@example.com", sexo: "H" }
+     ])
+     ```
+   - Esto insertará 5 estudiantes en la colección "estudiantes".
+
+Sí, es posible insertar un estudiante solo con nombre, apellido y curso. Por ejemplo:
+
+     ```bash
+     db.estudiantes.insertOne({ nombre: "Laura", apellido: "García", curso: "A" })
+     ```
+   - Esto insertará un estudiante con nombre "Laura", apellido "García" y curso "A".
+
+Ejecuta el siguiente comando para obtener todos los estudiantes:
+
+     ```bash
+     db.estudiantes.find()
+     ```
+   - Esto te mostrará todos los estudiantes en la colección.
+
+Ejecuta el siguiente comando para obtener estudiantes de sexo "H":
+
+     ```bash
+     db.estudiantes.find({ sexo: "H" })
+     ```
+   - Esto te mostrará todos los estudiantes de sexo "H".
+
+Ejecuta el siguiente comando para contar el número total de estudiantes:
+
+     ```bash
+     db.estudiantes.count()
+     ```
+   - Esto te dará el número total de estudiantes en la colección.
+
+Ejecuta el siguiente comando para contar el número de estudiantes que son mujeres:
+
+     ```bash
+     db.estudiantes.count({ sexo: "M" })
+     ```
+   - Esto te dará el número de estudiantes que son mujeres.

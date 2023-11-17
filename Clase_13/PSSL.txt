@@ -1,0 +1,34 @@
+Ejemplo en vivo
+
+Basado en nuestra base de datos “colegio”
+Se agregarán 5 estudiantes más, con diferentes campos y con la misma estructura. además, crear 1 alumno sólo con nombre.
+Realizar una búsqueda aplicando ordenamientos, proyecciones, saltos y límites.
+Se analizarán los resultados de las proyecciones, saltos, ordenamientos y límites. ¿Cómo se comportan los documentos que tienen campos incompletos?
+
+Solución
+
+Agregar 5 estudiantes más y 1 alumno solo con nombre:
+
+```bash
+db.estudiantes.insertMany([
+  { nombre: "Juan", apellido: "Pérez", curso: "1A", edad: 15, correo: "juan@gmail.com", sexo: "M" },
+  { nombre: "Ana", apellido: "Gómez", curso: "2B", edad: 16, correo: "ana@gmail.com", sexo: "F" },
+  { nombre: "Carlos", apellido: "Ramírez", curso: "3C", edad: 14, correo: "carlos@gmail.com", sexo: "M" },
+  { nombre: "María", apellido: "López", curso: "4D", edad: 17, correo: "maria@gmail.com", sexo: "F" },
+  { nombre: "Pedro", apellido: "Martínez", curso: "5E", edad: 15, correo: "pedro@gmail.com", sexo: "M" },
+  { nombre: "Sofía" }
+])
+```
+
+Realizar una búsqueda con ordenamientos, proyecciones, saltos y límites:
+
+    ```bash
+    db.estudiantes.find({}, { nombre: 1, curso: 1, _id: 0 }).sort({ nombre: 1 }).skip(2).limit(3)
+    ```
+    - Esta consulta devuelve una lista de estudiantes ordenados alfabéticamente por nombre, proyectando solo los campos "nombre" y "curso", saltando los primeros 2 documentos y limitando el resultado a 3 documentos.
+
+Análisis de Resultados:
+
+Campos Incompletos: En la base de datos, hay un estudiante llamado "Sofía" que tiene solo el campo "nombre". Al realizar la proyección, se mostrarán solo los campos que existen. En este caso, se mostrará el campo "nombre", y "curso" será excluido de los resultados.
+
+Saltos y Límites: Los saltos y límites se aplicarán después de ordenar y antes de proyectar. En el ejemplo, se omiten los primeros 2 documentos, se limita a 3 documentos y se proyectan solo los campos "nombre" y "curso".
