@@ -1,0 +1,31 @@
+Crear un sistema básico de sesiones en Express para gestionar la autenticación de usuarios en un servidor. El sistema debe permitir a los usuarios iniciar sesión proporcionando un nombre de usuario. Una vez iniciada la sesión, se mostrará un mensaje de bienvenida personalizado en las páginas posteriores. Los usuarios también deben tener la opción de cerrar sesión.
+
+Requisitos:
+Página de Inicio:
+
+La ruta raíz ("/") debe mostrar un mensaje de bienvenida.
+Si el usuario ha iniciado sesión, el mensaje debe incluir un saludo personalizado con el nombre de usuario.
+Si el usuario no ha iniciado sesión, el mensaje debe ser "Bienvenido".
+Formulario de Inicio de Sesión:
+
+En la página de inicio, incluir un formulario que solicite el nombre de usuario.
+El formulario debe enviar una solicitud POST a la ruta "/login" al hacer clic en el botón de inicio de sesión.
+Inicio de Sesión:
+
+Cuando se envía el formulario de inicio de sesión, el nombre de usuario proporcionado debe almacenarse en la sesión.
+Después de iniciar sesión, redirigir al usuario a la página de inicio ("/").
+Cierre de Sesión:
+
+Incluir un formulario en la página de inicio que permita al usuario cerrar sesión.
+El formulario debe enviar una solicitud POST a la ruta "/logout" al hacer clic en el botón de cerrar sesión.
+Al cerrar sesión, la información de la sesión debe eliminarse.
+Instrucciones:
+Utiliza Express y el middleware express-session para gestionar las sesiones.
+Utiliza formularios HTML para recopilar la información del usuario.
+Utiliza dos rutas adicionales ("/login" y "/logout") para manejar las operaciones de inicio y cierre de sesión.
+Consejo Adicional:
+
+Puedes configurar el tiempo de vida de la sesión para que la información de inicio de sesión se elimine después de un tiempo específico.
+Notas:
+Asegúrate de tener instaladas las dependencias necesarias (express y express-session).
+Ejecuta el servidor en el puerto 8080.
