@@ -1,9 +1,9 @@
-import express from 'express';
+import express from "express";
 
 const router = express.Router();
 
-router.get('/login', (req, res) => {
-    res.send('Formulario de inicio de sesión');
+router.get("/", (req, res) => {
+  res.send("Formulario del home");
 });
 
 export default router;

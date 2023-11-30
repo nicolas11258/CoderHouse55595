@@ -3,7 +3,10 @@ import express from 'express';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.send('Página de inicio');
+    res.render("index", {
+        layout: "login",
+
+      });
 });
 
 export default router;
