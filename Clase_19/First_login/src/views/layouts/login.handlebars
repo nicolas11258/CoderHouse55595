@@ -2,20 +2,19 @@
   <div class="row">
     <div class="col-md-6">
       <h2>{{title}}</h2>
-      <form action="{{action}}" method="post">
-        <input type="email" name="email" placeholder="{{label}}">
-        <input type="password" name="password" placeholder="{{label}}">
+      <form action="{{actionLogin}}" method="post">
+        <input type="email" name="email_login" placeholder="email">
+        <input type="password" name="password_login" placeholder="password">
         <input type="submit" value="{{submitLabel}}">
       </form>
     </div>
     <div class="col-md-6">
-      <h2>{{title}}</h2>
-      <form action="{{action}}" method="post">
-        <input type="text" name="name" placeholder="{{label}}">
-        <input type="email" name="email" placeholder="{{label}}">
-        <input type="password" name="password" placeholder="{{label}}">
-        <input type="password" name="confirm_password" placeholder="{{label}}">
-        <input type="submit" value="{{submitLabel}}">
+      <h2>{{title_register}}</h2>
+      <form action="{{actionRegister}}" method="post">
+        <input type="text" name="name_register" placeholder="name">
+        <input type="email" name="email_register" placeholder="email">
+        <input type="password" name="password_register" placeholder="password">
+        <input type="submit" value="{{submitLabelRegister}}">
       </form>
     </div>
   </div>

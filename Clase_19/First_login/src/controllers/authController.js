@@ -3,8 +3,8 @@ import userModel from "../models/user.model.js";
 export const registerUser = async (req, res) => {
   try {
     // Lógica para registrar un usuario en la base de datos
-    const { first_name, last_name, email, age, password } = req.body;
-    const user = new userModel({ first_name, last_name, email, age, password });
+    const { name, email, password } = req.body;
+    const user = new userModel({ name, email, password });
     await user.save();
     res.send("Usuario registrado exitosamente");
   } catch (error) {

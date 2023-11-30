@@ -4,10 +4,8 @@ const userCollection = 'users'
 const { Schema, model } = mongoose;
 
 const userSchema = new Schema({
-  first_name: String,
-  last_name: String,
+  name: String,
   email: String,
-  age: Number,
   password: String,
 });
 
