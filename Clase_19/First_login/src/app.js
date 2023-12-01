@@ -42,9 +42,9 @@ app.use(session({
 
 // Configuración de rutas
 app.use('/', indexRouter);
-app.use('/', loginRouter);
-app.use('/', registerRouter);
-app.use('/', profileRouter);
+app.use('/login', loginRouter);
+app.use('/register', registerRouter);
+app.use('/profile', profileRouter);
 app.use('/api/sessions', sessionsApiRouter);
 
 // Manejo de errores

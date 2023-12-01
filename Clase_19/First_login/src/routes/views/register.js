@@ -1,9 +1,6 @@
-import express from 'express';
+import express from "express";
+import { registerUser } from "../../controllers/authController.js";
 
 const router = express.Router();
-
-router.get('/register', (req, res) => {
-    res.send('Formulario de registro');
-});
 
 export default router;

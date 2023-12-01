@@ -1,28 +1,21 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-</head>
-
-<body>
-    <header>
-        <h1>Sistema de Login</h1>
-        <nav>
-            <a href="/">Inicio</a>
-            <a href="/login">Iniciar Sesión</a>
-            <a href="/register">Registro</a>
-            <a href="/profile">Perfil</a>
-        </nav>
-    </header>
-    <main>
-        {{{body}}}
-    </main>
-    <footer>
-        <p>&copy; 2023 Sistema de Login</p>
-    </footer>
-</body>
-
-</html>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>{{title}}</h2>
+      <form action="{{actionLogin}}" method="post">
+        <input type="email" name="email_login" placeholder="email">
+        <input type="password" name="password_login" placeholder="password">
+        <input type="submit" value="{{submitLabel}}">
+      </form>
+    </div>
+    <div class="col-md-6">
+      <h2>{{title_register}}</h2>
+      <form action="{{actionRegister}}" method="post">
+        <input type="text" name="name_register" placeholder="name">
+        <input type="email" name="email_register" placeholder="email">
+        <input type="password" name="password_register" placeholder="password">
+        <input type="submit" value="{{submitLabelRegister}}">
+      </form>
+    </div>
+  </div>
+</div>

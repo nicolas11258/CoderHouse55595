@@ -3,6 +3,6 @@ import { showProfile } from '../../controllers/userController.js';
 
 const router = express.Router();
 
-router.get('/profile', showProfile);
+router.get('/', showProfile);
 
 export default router;

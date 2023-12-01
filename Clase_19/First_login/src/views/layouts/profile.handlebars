@@ -1,0 +1,7 @@
+<h2>User Profile</h2>
+{{#if user}}
+    <p>Welcome, {{user.name}}!</p>
+    <p>Email: {{user.email}}</p>
+{{else}}
+    <p>User not logged in</p>
+{{/if}}
