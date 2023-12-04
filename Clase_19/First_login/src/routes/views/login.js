@@ -1,5 +1,4 @@
 import express from "express";
-import { loginUser } from "../../controllers/authController.js";
 
 const router = express.Router();
 
@@ -8,8 +7,8 @@ router.get("/", (req, res) => {
     layout: "main",
     title: "Inicio de sesión",
     title_register: "Registro",
-    actionRegister: "/api/sessions/register/",
-    actionLogin: "/api/sessions/login/",
+    actionRegister: "http://localhost:8080/api/sessions/register/",
+    actionLogin: "http://localhost:8080/api/sessions/login/",
     submitLabel: "Login",
     submitLabelRegister: "Register",
   };

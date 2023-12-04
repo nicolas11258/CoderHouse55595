@@ -1,8 +1,13 @@
-import express from 'express';
-import { showProfile } from '../../controllers/userController.js';
+import express from "express";
 
 const router = express.Router();
 
-router.get('/', showProfile);
+router.get("/", (req, res) => {
+  let data = {
+    layout: "profile",
+    user: req.session,
+  };
+  res.render("index", data);
+});
 
 export default router;

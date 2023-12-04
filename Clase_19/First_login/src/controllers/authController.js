@@ -6,12 +6,12 @@ export const registerUser = async (req, res) => {
     const { name, email, password } = req.body;
     const user = new userModel({ name, email, password });
     await user.save();
-    res.send("Usuario registrado exitosamente");
-    res.redirect("/profile");
+    req.session.name = name;
+    req.session.email = email;
+    res.redirect("http://localhost:8080/profile");
   } catch (error) {
-    console.error(error);
-    res.status(500).send("Error al registrar usuario");
-    res.redirect("/");
+    console.log(error);
+    res.redirect("http://localhost:8080");
   }
 };
 
@@ -22,16 +22,13 @@ export const loginUser = async (req, res) => {
     const user = await User.findOne({ email, password });
     if (user) {
       req.session.user = user; // Almacena el usuario en la sesión
-      res.send('Inicio de sesión exitoso.');
-      res.redirect("/profile");
+      res.redirect("http://localhost:8080/profile");
     } else {
-      res.status(401).send('Credenciales inválidas.');
-      res.redirect("/");
+      res.redirect("http://localhost:8080");
     }
   } catch (error) {
-    console.error(error);
-    res.status(500).send('Error interno del servidor');
-    res.redirect("/");
+    console.log("Error, credenciales invalidas", error);
+    res.redirect("http://localhost:8080");
   }
 };
 
@@ -44,17 +41,17 @@ export const logOutUser = async (req, res) => {
       // Opcionalmente, puedes destruir completamente la sesión
       req.session.destroy((err) => {
         if (err) {
-          console.error(err);
+          console.error("Error al cerrar la sesión", err);
           res.status(500).send("Error al cerrar la sesión");
         } else {
-          res.redirect("/");
+          res.redirect("http://localhost:8080");
         }
       });
     } else {
-      res.redirect("/");
+      res.redirect("http://localhost:8080");
     }
   } catch (error) {
-    console.error(error);
+    console.error("Error al cerrar la sesión", error);
     res.status(500).send("Error al cerrar la sesión");
   }
 };

@@ -8,7 +8,6 @@ import MongoStore from 'connect-mongo';
 import __dirname from './utils.js';
 import indexRouter from './routes/views/index.js';
 import loginRouter from './routes/views/login.js';
-import registerRouter from './routes/views/register.js';
 import profileRouter from './routes/views/profile.js';
 import sessionsApiRouter from './routes/api/sessions.js';
 
@@ -43,7 +42,6 @@ app.use(session({
 // Configuración de rutas
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
-app.use('/register', registerRouter);
 app.use('/profile', profileRouter);
 app.use('/api/sessions', sessionsApiRouter);
 

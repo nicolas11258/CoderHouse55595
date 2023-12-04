@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
     let data ={
-        layout: "main"
+        layout: "nofound"
     }
     res.render("index", data);
 });
