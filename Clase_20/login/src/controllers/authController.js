@@ -1,5 +1,5 @@
 import userModel from "../models/user.model.js";
-import { createHash } from "../utils.js";
+import { createHash, isValidPassword } from "../utils.js";
 
 // Registra a un nuevo usuario.
 export const registerUser = async (req, res) => {
@@ -12,8 +12,7 @@ export const registerUser = async (req, res) => {
 
     const user = new userModel({ name, email, password: createHash(password) });
     await user.save();
-    req.session.name = name;
-    req.session.email = email;
+    req.session.user = user;
     res.redirect("/profile");
   } catch (error) {
     console.log(error);
@@ -27,21 +26,21 @@ export const registerUser = async (req, res) => {
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-    if (!email || !password)
-      return res
-        .status(401)
-        .send({ status: "Error", error: "Incomplete values" });
 
-    const user = await userModel.findOne({ email, password });
-    if (user) {
-      req.session.name = user.name;
-      req.session.email = user.email;
-      res.redirect("/profile");
-    } else {
+    const user = await userModel.findOne({ email: email },{email:1, name:1, password:1});
+    if (!user)
       return res
         .status(401)
-        .send({ status: "Error", error: "Usuario y/o contraseña incorrecta" });
-    }
+        .send({ status: "Error", error: "Usuario y/o contraseña incorrecta 1" });
+
+    if (!isValidPassword(user, password))
+      return res
+        .status(401)
+        .send({ status: "Error", error: "Usuario y/o contraseña incorrecta 2" });
+
+    delete user.password;
+    req.session.user = user;
+    res.redirect("/profile");
   } catch (error) {
     console.log("Error, credenciales invalidas", error);
     res.redirect("/error");
