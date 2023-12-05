@@ -11,6 +11,7 @@ import indexRouter from './routes/views/index.js';
 import loginRouter from './routes/views/login.js';
 import profileRouter from './routes/views/profile.js';
 import sessionsApiRouter from './routes/api/sessions.js';
+import recoveryPassword from './routes/views/recoverypassword.js';
 
 const app = express();
 const port = 8080;
@@ -44,6 +45,7 @@ app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/profile', profileRouter);
 app.use('/logout', sessionsApiRouter);
+app.use('/recovery', recoveryPassword);
 app.use('/api/sessions', sessionsApiRouter);
 
 app.use((err, req, res, next) => {

@@ -27,16 +27,21 @@ export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const user = await userModel.findOne({ email: email },{email:1, name:1, password:1});
+    const user = await userModel.findOne(
+      { email: email },
+      { email: 1, name: 1, password: 1 }
+    );
     if (!user)
-      return res
-        .status(401)
-        .send({ status: "Error", error: "Usuario y/o contraseña incorrecta 1" });
+      return res.status(401).send({
+        status: "Error",
+        error: "Usuario y/o contraseña incorrecta 1",
+      });
 
     if (!isValidPassword(user, password))
-      return res
-        .status(401)
-        .send({ status: "Error", error: "Usuario y/o contraseña incorrecta 2" });
+      return res.status(401).send({
+        status: "Error",
+        error: "Usuario y/o contraseña incorrecta 2",
+      });
 
     delete user.password;
     req.session.user = user;
@@ -69,4 +74,16 @@ export const logOutUser = async (req, res) => {
     console.error("Error al cerrar la sesión", error);
     res.status(500).send("Error al cerrar la sesión");
   }
+};
+
+export const recoveryPassword = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const user = await userModel.updateOne(
+      { email },
+      { password: createHash(password) }
+    );
+    res.redirect("/login");
+  } catch (error) {}
 };
