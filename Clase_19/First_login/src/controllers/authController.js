@@ -21,7 +21,8 @@ export const loginUser = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email, password });
     if (user) {
-      req.session.user = user; // Almacena el usuario en la sesión
+      req.session.name = user.name;
+      req.session.email = user.email;
       res.redirect("http://localhost:8080/profile");
     } else {
       res.redirect("http://localhost:8080");

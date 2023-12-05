@@ -15,7 +15,7 @@ const app = express();
 const port = 8080;
 
 // Conexión a la base de datos MongoDB
-mongoose.connect("mongodb+srv://nicolas11258:0kCg8T4wNf5Ne0zc@cluster0.sy13hmr.mongodb.net/clase_18?retryWrites=true&w=majority", {});
+mongoose.connect("mongodb+srv://nicolas11258:0kCg8T4wNf5Ne0zc@cluster0.sy13hmr.mongodb.net/clase_19?retryWrites=true&w=majority", {});
 
 // Configuración de Handlebars
 app.engine('handlebars',handlebars.engine());
@@ -33,7 +33,7 @@ app.use(session({
     resave: false, // Evitar que se guarde la sesión en cada solicitud
     saveUninitialized: true, // Guardar la sesión incluso si no se ha modificado
     store: MongoStore.create({
-        mongoUrl:"mongodb+srv://nicolas11258:0kCg8T4wNf5Ne0zc@cluster0.sy13hmr.mongodb.net/clase_18?retryWrites=true&w=majority",
+        mongoUrl:"mongodb+srv://nicolas11258:0kCg8T4wNf5Ne0zc@cluster0.sy13hmr.mongodb.net/clase_19?retryWrites=true&w=majority",
 
         ttl: 2 * 60, // Tiempo de vida de la sesión en segundos (2 minutos en este caso)
     }),
