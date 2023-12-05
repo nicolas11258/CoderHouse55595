@@ -7,10 +7,8 @@ router.get("/", (req, res) => {
     layout: "main",
     title: "Inicio de sesión",
     title_register: "Registro",
-    actionRegister: "http://localhost:8080/api/sessions/register/",
-    actionLogin: "http://localhost:8080/api/sessions/login/",
-    submitLabel: "Login",
-    submitLabelRegister: "Register",
+    actionRegister: "/api/sessions/register/",
+    actionLogin: "/api/sessions/login/",
   };
   res.render("index", data);
 });

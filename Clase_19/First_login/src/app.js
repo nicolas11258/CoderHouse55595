@@ -39,13 +39,12 @@ app.use(session({
     }),
 }));
 
-// Configuración de rutas
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/profile', profileRouter);
+app.use('/logout', sessionsApiRouter);
 app.use('/api/sessions', sessionsApiRouter);
 
-// Manejo de errores
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Algo salió mal!');

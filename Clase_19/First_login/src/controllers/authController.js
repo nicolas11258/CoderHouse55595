@@ -8,10 +8,10 @@ export const registerUser = async (req, res) => {
     await user.save();
     req.session.name = name;
     req.session.email = email;
-    res.redirect("http://localhost:8080/profile");
+    res.redirect("/profile");
   } catch (error) {
     console.log(error);
-    res.redirect("http://localhost:8080");
+    res.redirect("/");
   }
 };
 
@@ -19,17 +19,17 @@ export const registerUser = async (req, res) => {
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ email, password });
+    const user = await userModel.findOne({email, password});
     if (user) {
       req.session.name = user.name;
       req.session.email = user.email;
-      res.redirect("http://localhost:8080/profile");
+      res.redirect("/profile");
     } else {
-      res.redirect("http://localhost:8080");
+      res.redirect("/");
     }
   } catch (error) {
     console.log("Error, credenciales invalidas", error);
-    res.redirect("http://localhost:8080");
+    res.redirect("/error");
   }
 };
 
@@ -45,11 +45,11 @@ export const logOutUser = async (req, res) => {
           console.error("Error al cerrar la sesión", err);
           res.status(500).send("Error al cerrar la sesión");
         } else {
-          res.redirect("http://localhost:8080");
+          res.redirect("/login");
         }
       });
     } else {
-      res.redirect("http://localhost:8080");
+      res.redirect("/login");
     }
   } catch (error) {
     console.error("Error al cerrar la sesión", error);
