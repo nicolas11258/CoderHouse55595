@@ -1,0 +1,28 @@
+Para responder a estas preguntas, primero debes entender 
+el concepto de TTL (Time-To-Live) o tiempo de vida en MongoDB 
+y cómo afecta a las sesiones almacenadas en la base de datos.
+
+Coloca el ttl en 15 segundos:
+
+Configurando el ttl en 15 segundos, estás indicando que las 
+sesiones deben expirar después de 15 segundos de inactividad.
+Al realizar peticiones constantes al endpoint de login, deberías 
+ver que cada vez que haces una nueva solicitud, el contador de 
+tiempo de expiración se reinicia a 15 segundos.
+Si no hay actividad durante 15 segundos, la sesión debería expirar 
+automáticamente y no estar disponible para su uso.
+
+Retira el ttl de la configuración:
+
+Al retirar el ttl de la configuración, estás utilizando el tiempo de 
+expiración predeterminado de MongoDB para las sesiones, que suele ser 
+de aproximadamente 30 minutos.
+Después de generar una nueva sesión, esta debería mantenerse activa 
+hasta que haya pasado un período de inactividad de alrededor de 30 minutos.
+Si haces peticiones constantes al endpoint de login, la sesión debería 
+mantenerse activa mientras haya actividad dentro de ese período de 30 minutos.
+Recuerda que el comportamiento exacto puede variar según la implementación 
+y configuración específicas. Asegúrate de revisar la documentación de las 
+bibliotecas y del proveedor de servicios que estás utilizando para obtener 
+detalles específicos sobre cómo se manejan las sesiones y los tiempos de 
+expiración.

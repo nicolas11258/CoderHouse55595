@@ -22,3 +22,6 @@ CoderHouse-55595.code-workspace
 
 # Para archivos de configuración locales, no los incluyas en el repositorio
 .env
+
+# No almacenar sesiones
+**/sessions
