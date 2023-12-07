@@ -12,13 +12,12 @@ export const registerUser = async (req, res) => {
 
     const user = new userModel({ name, email, password: createHash(password) });
     await user.save();
+    delete user.password;
     req.session.user = user;
     res.redirect("/profile");
   } catch (error) {
     console.log(error);
-    return res
-      .status(401)
-      .send({ status: "Error", error: "Incomplete values" });
+    res.redirect("/");
   }
 };
 
@@ -28,9 +27,10 @@ export const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     const user = await userModel.findOne(
-      { email: email },
+      { email },
       { email: 1, name: 1, password: 1 }
     );
+
     if (!user)
       return res.status(401).send({
         status: "Error",
@@ -79,11 +79,10 @@ export const logOutUser = async (req, res) => {
 export const recoveryPassword = async (req, res) => {
   try {
     const { email, password } = req.body;
-
-    const user = await userModel.updateOne(
-      { email },
-      { password: createHash(password) }
-    );
+    await userModel.updateOne({ email }, { password: createHash(password) });
     res.redirect("/login");
-  } catch (error) {}
+  } catch (error) {
+    console.error("Error al recuperar contraseña", error);
+    res.status(500).send("Error al cerrar la sesión");
+  }
 };
