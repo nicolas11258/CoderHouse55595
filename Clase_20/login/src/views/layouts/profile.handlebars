@@ -1,0 +1,8 @@
+<h2>User Profile</h2>
+{{#if user}}
+    <p>Welcome, {{user.name}}!</p>
+    <p>Email: {{user.email}}</p>
+    <a href="/logout" title="logout">Logout</a>
+{{else}}
+    <p>User not logged in</p>
+{{/if}} 
