@@ -14,6 +14,6 @@ form.addEventListener("submit", (e) => {
   })
     .then((result) => result.json())
     .then((json) => {
-      window.location.replace("/");
+      window.location.replace("/current");
     });
 });

@@ -1,5 +1,10 @@
 import express from "express";
-import { authToken, generateToken, passportCall } from "./utils.js";
+import {
+  authToken,
+  authorization,
+  generateToken,
+  passportCall,
+} from "./utils.js";
 import handlebars from "express-handlebars";
 import cookieParser from "cookie-parser";
 import passport from "passport";
@@ -53,6 +58,7 @@ app.post("/api/register", (req, res) => {
 app.post("/api/login", (req, res) => {
   const { email, password } = req.body;
   if (email === "user@gmail.com" && password === "12345") {
+    req.body.role = "user";
     let token = generateToken(req.body);
     res
       .cookie("access_token", token, {
@@ -65,8 +71,6 @@ app.post("/api/login", (req, res) => {
   }
 });
 
-app.get(
-  "/current",
-  passportCall("jwt"), (req, res) => {
-    res.send(req.user);
+app.get("/current", passportCall("jwt"), authorization("user"), (req, res) => {
+  res.send(req.user);
 });
