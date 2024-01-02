@@ -1,11 +1,11 @@
 const juguetes = [];
 
-function obtenerJuguetes() {
+const obtenerJuguetes = () => {
   return juguetes;
-}
+};
 
-function agregarJuguete(nuevoJuguete) {
+const agregarJuguete = (nuevoJuguete) => {
   juguetes.push(nuevoJuguete);
-}
+};
 
 export { obtenerJuguetes, agregarJuguete };

@@ -1,11 +1,11 @@
-import * as juguetesDAO from '../persistence/juguetes.dao.js';
+import * as juguetesDAO from "../persistence/juguetes.dao.js";
 
-function obtenerJuguetes() {
+const obtenerJuguetes = () => {
   return juguetesDAO.obtenerJuguetes();
-}
+};
 
-function agregarJuguete(nuevoJuguete) {
+const agregarJuguete = (nuevoJuguete) => {
   juguetesDAO.agregarJuguete(nuevoJuguete);
-}
+};
 
 export { obtenerJuguetes, agregarJuguete };

@@ -4,8 +4,7 @@ const obtenerJuguetes = (req, res) => res.json(juguetesService.obtenerJuguetes()
 
 const agregarJuguete = (req, res) => {
   const { body } = req;
-  const { nuevoJuguete } = body;
-  juguetesService.agregarJuguete(nuevoJuguete);
+  juguetesService.agregarJuguete(body);
   res.json({ mensaje: 'Juguete agregado correctamente' });
 };
 

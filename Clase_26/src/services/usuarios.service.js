@@ -1,11 +1,11 @@
-import * as usuariosDAO from '../persistence/usuarios.dao.js';
+import * as usuariosDAO from "../persistence/usuarios.dao.js";
 
-function obtenerUsuarios() {
+const obtenerUsuarios = () => {
   return usuariosDAO.obtenerUsuarios();
-}
+};
 
-function agregarUsuario(nuevoUsuario) {
+const agregarUsuario = (nuevoUsuario) => {
   usuariosDAO.agregarUsuario(nuevoUsuario);
-}
+};
 
 export { obtenerUsuarios, agregarUsuario };

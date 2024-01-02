@@ -1,11 +1,11 @@
 const usuarios = [];
 
-function obtenerUsuarios() {
+const obtenerUsuarios = () => {
   return usuarios;
-}
+};
 
-function agregarUsuario(nuevoUsuario) {
+const agregarUsuario = (nuevoUsuario) => {
   usuarios.push(nuevoUsuario);
-}
+};
 
 export { obtenerUsuarios, agregarUsuario };
