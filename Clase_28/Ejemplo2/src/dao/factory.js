@@ -6,8 +6,18 @@ export let Contacts;
 switch (config.persistence) {
   case "MONGO":
     const connection = mongoose.connect(config.db, {});
+
+    const db = mongoose.connection;
+
+    db.on(
+      "error",
+      console.error.bind(console, "Error de conexión a la base de datos:")
+    );
+    db.once("open", () => {
+      console.log("Conectado a la base de datos");
+    });
     const { default: ContactsMongo } = await import(
-      "./mongo/models/contact.model.js"
+      "./mongodb/contacts.mongodb.js"
     );
     Contacts = ContactsMongo;
     break;

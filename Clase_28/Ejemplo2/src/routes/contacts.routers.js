@@ -1,5 +1,5 @@
 import { Router } from "express";
-import Contacts from "../dao/mongodb/contacts.mongodb.js";
+import { Contacts } from "../dao/factory.js";
 
 const router = Router();
 const contactService = new Contacts();
