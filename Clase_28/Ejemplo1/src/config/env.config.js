@@ -4,5 +4,5 @@ dotenv.config()
 
 export default {
     persistence: process.env.PERSISTENCE,
-    DB: process.env.DB,
+    db: process.env.DB,
 }
