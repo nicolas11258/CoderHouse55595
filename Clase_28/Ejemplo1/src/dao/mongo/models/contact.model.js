@@ -6,7 +6,7 @@ const { Schema, model } = mongoose;
 const contactsSchema = new Schema({
   name: String,
   email: String,
-  celphone: String,
+  cellphone: String,
 });
 
 const contactsModel = model(contactsCollection, contactsSchema);

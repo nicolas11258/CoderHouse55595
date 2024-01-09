@@ -6,5 +6,5 @@ const port = 8080;
 const server = app.listen(port, () => {
   console.log(`Servidor corriendo en el puerto ${port}`);
 });
-
+app.use(express.json());
 app.use("/contacts", contactsRoutes);
