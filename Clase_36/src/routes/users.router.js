@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import usersModel from '../models/User.js';
-import { faker } from '@faker-js/fake';
+import { faker } from '@faker-js/faker';
 
 const router = Router();
 
