@@ -20,3 +20,25 @@ export class AppModule implements NestModule{
     consumer.apply(FirstMeddleware).forRoutes({path:'*', method:RequestMethod.ALL})
   }
 }
+
+/* Segunda parte
+import { Module } from '@nestjs/common';
+import { UsersModule } from './users/users.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
+
+@Module({
+  imports: [
+    ConfigModule.forRoot(),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get('MONGO_URL'),
+      }),
+    })],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule {}
+*/
